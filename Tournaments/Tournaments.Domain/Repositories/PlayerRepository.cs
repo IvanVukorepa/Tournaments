@@ -18,14 +18,36 @@ namespace Tournaments.Domain.Repositories
             }
         }
 
-        public void CreatePlayer(string firstName ,string lastName, string phoneNumber, string email)
+        public List<Player> GetAllPlayersWithoutTeams()
         {
             using (var context = new TournamentsContext())
             {
-                if(context.Players.Where(x => x.FirstName==firstName && x.LastName==lastName).Count()==0)
-                    context.Players.Add(new Player(firstName, lastName, phoneNumber, email));
-                context.SaveChanges();
+                return context.Players.Where(x => x.Team==null).ToList();
             }
+        }
+
+        public Player GetPlayerByName(string fullName)
+        {
+            string[] name = fullName.Split(' ');
+            using (var context = new TournamentsContext())
+            {
+                return context.Players.FirstOrDefault(x => x.FirstName == name[0] && x.LastName==name[1]);
+            }
+        }
+
+        public bool CreatePlayer(string firstName ,string lastName, string phoneNumber, string email)
+        {
+            bool returnValue=false;
+            using (var context = new TournamentsContext())
+            {
+                if (context.Players.Where(x => x.FirstName == firstName && x.LastName == lastName).Count() == 0)
+                {
+                    context.Players.Add(new Player(firstName, lastName, phoneNumber, email));
+                    context.SaveChanges();
+                    returnValue= true;
+                }              
+            }
+            return returnValue;
         } 
     }
 }

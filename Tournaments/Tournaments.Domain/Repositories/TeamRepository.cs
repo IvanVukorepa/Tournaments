@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tournaments.Data;
 using Tournaments.Data.Models;
+using System.Data.Entity;
 
 namespace Tournaments.Domain.Repositories
 {
@@ -42,8 +43,9 @@ namespace Tournaments.Domain.Repositories
         {
             using (var context = new TournamentsContext())
             {
-                    context.Teams.Remove(context.Teams.FirstOrDefault(x=>x.Name==name));
-                    context.SaveChanges();
+                var team = context.Teams.FirstOrDefault(x => x.Name == name);
+                context.Entry(team).State = EntityState.Deleted;
+                context.SaveChanges();
             }
         }
     }

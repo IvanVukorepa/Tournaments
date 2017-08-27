@@ -79,5 +79,20 @@ namespace Tournaments.Presentation
 
             UpdateTeamsListBox();
         }
+
+        private void btn_AddNewPlayer_Click(object sender, EventArgs e)
+        {
+            string teamName = lbox_teams.SelectedItem.ToString();
+            if (teamRepository.GetTeamByName(teamName).Players.Count == 5)
+            {
+                MessageBox.Show("That team already has 5 players!");
+            }
+            else
+            {
+                AddPlayerToTeam addPlayerForm = new AddPlayerToTeam(teamName);
+                addPlayerForm.ShowDialog();
+                UpdatePlayersListBox();
+            }
+        }
     }
 }

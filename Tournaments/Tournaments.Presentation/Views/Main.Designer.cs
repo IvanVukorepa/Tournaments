@@ -114,6 +114,7 @@
             this.btn_AddNewPlayer.TabIndex = 7;
             this.btn_AddNewPlayer.Text = "Add new player";
             this.btn_AddNewPlayer.UseVisualStyleBackColor = true;
+            this.btn_AddNewPlayer.Click += new System.EventHandler(this.btn_AddNewPlayer_Click);
             // 
             // btn_RemovePlayerFromTeam
             // 

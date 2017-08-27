@@ -61,6 +61,18 @@
     <Compile Include="Views\AddNewTeamForm.Designer.cs">
       <DependentUpon>AddNewTeamForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddPlayerToTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddPlayerToTeam.Designer.cs">
+      <DependentUpon>AddPlayerToTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatePlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CreatePlayer.Designer.cs">
+      <DependentUpon>CreatePlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\AddNewTeamForm.resx">
       <DependentUpon>AddNewTeamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddPlayerToTeam.resx">
+      <DependentUpon>AddPlayerToTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreatePlayer.resx">
+      <DependentUpon>CreatePlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
