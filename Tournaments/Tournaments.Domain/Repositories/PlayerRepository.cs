@@ -17,5 +17,15 @@ namespace Tournaments.Domain.Repositories
                 return context.Players.ToList();
             }
         }
+
+        public void CreatePlayer(string firstName ,string lastName, string phoneNumber, string email)
+        {
+            using (var context = new TournamentsContext())
+            {
+                if(context.Players.Where(x => x.FirstName==firstName && x.LastName==lastName).Count()==0)
+                    context.Players.Add(new Player(firstName, lastName, phoneNumber, email));
+                context.SaveChanges();
+            }
+        } 
     }
 }

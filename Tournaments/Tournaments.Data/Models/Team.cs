@@ -25,5 +25,15 @@ namespace Tournaments.Data.Models
             MatchesPlayed = new HashSet<Match>();
             Players = new List<Player>();
         }
+
+        public Team(string name, string logoAnimalName)
+        {
+            TournamentsWon = new HashSet<Tournament>();
+            LastTournamentWonDate = null;
+            MatchesPlayed = new HashSet<Match>();
+            Players = new List<Player>();
+            Name = name;
+            LogoAnimalName = logoAnimalName;
+        }
     }
 }
