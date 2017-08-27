@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tournaments.Domain;
+using Tournaments.Domain.Repositories;
+using Tournaments.Data.Models;
 
 namespace Tournaments.Presentation
 {
