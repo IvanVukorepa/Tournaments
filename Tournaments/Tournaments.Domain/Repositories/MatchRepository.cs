@@ -17,7 +17,7 @@ namespace Tournaments.Domain.Repositories
 
             using (var context = new TournamentsContext())
             {
-                if (round == Round.semiFinals)
+                if (round == Round.semiFinals || round==Round.friendly)
                 {
                     context.Teams.Attach(team1);
                     context.Teams.Attach(team2);
@@ -26,7 +26,8 @@ namespace Tournaments.Domain.Repositories
                 }
 
                 context.Matches.Add(match);
-                tournament.Matches.Add(match);
+                if(tournament!=null)
+                    tournament.Matches.Add(match);
                 match.Teams.Add(team1);
                 match.Teams.Add(team2);
 
