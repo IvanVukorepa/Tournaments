@@ -39,7 +39,7 @@ namespace Tournaments.Presentation.Views
         {
             if (lbox_homeTeamSelection.SelectedItem != null && lbox_awayTeamSelection.SelectedItem != null && lbox_awayTeamSelection.SelectedItem.ToString() != lbox_homeTeamSelection.SelectedItem.ToString())
             {
-                Match match = matchRepository.CreateMatch(lbox_homeTeamSelection.SelectedItem.ToString() + "-" + lbox_awayTeamSelection.SelectedItem.ToString(), Round.friendly, false, teamRepository.GetTeamByName(lbox_homeTeamSelection.SelectedItem.ToString()), teamRepository.GetTeamByName(lbox_awayTeamSelection.SelectedItem.ToString()));
+                Match match = matchRepository.CreateMatch(lbox_homeTeamSelection.SelectedItem.ToString() + "-" + lbox_awayTeamSelection.SelectedItem.ToString(), Round.friendly, false, null, teamRepository.GetTeamByName(lbox_homeTeamSelection.SelectedItem.ToString()), teamRepository.GetTeamByName(lbox_awayTeamSelection.SelectedItem.ToString()));
 
                 /*teamRepository.GetTeamByName(lbox_homeTeamSelection.SelectedItem.ToString()).MatchesPlayed.Add(match);
                 teamRepository.GetTeamByName(lbox_awayTeamSelection.SelectedItem.ToString()).MatchesPlayed.Add(match);

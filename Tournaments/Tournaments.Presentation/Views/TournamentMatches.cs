@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tournaments.Data.Models;
 using Tournaments.Domain.Repositories;
+using Tournaments.Data;
 
 namespace Tournaments.Presentation.Views
 {
@@ -36,9 +37,9 @@ namespace Tournaments.Presentation.Views
 
         private void btn_secondSemifinalPlay_Click(object sender, EventArgs e)
         {
-            Match match2 = matchRepository.CreateMatch(lbl_secondSemifinalFirstTeam.Text + "-" + lbl_secondSemifinalSecondTeam.Text, Round.semiFinals, true, teamRepository.GetTeamByName(lbl_secondSemifinalFirstTeam.Text), teamRepository.GetTeamByName(lbl_secondSemifinalSecondTeam.Text));
-            match2.Tournament = Tournament;
-            Tournament.Matches.Add(match2);
+            Match match2 = matchRepository.CreateMatch(lbl_secondSemifinalFirstTeam.Text + "-" + lbl_secondSemifinalSecondTeam.Text, Round.semiFinals, true, Tournament, teamRepository.GetTeamByName(lbl_secondSemifinalFirstTeam.Text), teamRepository.GetTeamByName(lbl_secondSemifinalSecondTeam.Text));
+            /*match2.Tournament = Tournament;
+            Tournament.Matches.Add(match2);*/
 
             /*teamRepository.GetTeamByName(lbl_secondSemifinalFirstTeam.Text).MatchesPlayed.Add(match2);
             teamRepository.GetTeamByName(lbl_secondSemifinalSecondTeam.Text).MatchesPlayed.Add(match2);
@@ -68,9 +69,9 @@ namespace Tournaments.Presentation.Views
             }
             else
             {
-                Match match = matchRepository.CreateMatch(lbl_firstFinalsTeam.Text + "-" + lbl_secondFinalsTeam.Text, Round.finals, true, teamRepository.GetTeamByName(lbl_firstFinalsTeam.Text), teamRepository.GetTeamByName(lbl_secondFinalsTeam.Text));
-                match.Tournament = Tournament;
-                Tournament.Matches.Add(match);
+                Match match = matchRepository.CreateMatch(lbl_firstFinalsTeam.Text + "-" + lbl_secondFinalsTeam.Text, Round.finals, true, Tournament, teamRepository.GetTeamByName(lbl_firstFinalsTeam.Text), teamRepository.GetTeamByName(lbl_secondFinalsTeam.Text));
+                /*match.Tournament = Tournament;
+                Tournament.Matches.Add(match);*/
 
                 /*teamRepository.GetTeamByName(lbl_firstFinalsTeam.Text).MatchesPlayed.Add(match);
                 teamRepository.GetTeamByName(lbl_secondFinalsTeam.Text).MatchesPlayed.Add(match);
@@ -97,9 +98,9 @@ namespace Tournaments.Presentation.Views
 
         private void btn_firstSemifinalPlay_Click(object sender, EventArgs e)
         {
-            Match match1 = matchRepository.CreateMatch(lbl_firstSemifinalFirstTeam.Text + "-" + lbl_firstSemifinalSecondTeam.Text, Round.semiFinals, true, teamRepository.GetTeamByName(lbl_firstSemifinalFirstTeam.Text), teamRepository.GetTeamByName(lbl_firstSemifinalSecondTeam.Text));
-            match1.Tournament = Tournament;
-            Tournament.Matches.Add(match1);
+            Match match1 = matchRepository.CreateMatch(lbl_firstSemifinalFirstTeam.Text + "-" + lbl_firstSemifinalSecondTeam.Text, Round.semiFinals, true, Tournament, teamRepository.GetTeamByName(lbl_firstSemifinalFirstTeam.Text), teamRepository.GetTeamByName(lbl_firstSemifinalSecondTeam.Text));
+            /*match1.Tournament = Tournament;
+            Tournament.Matches.Add(match1);*/
 
             /*teamRepository.GetTeamByName(lbl_firstSemifinalFirstTeam.Text).MatchesPlayed.Add(match1);
             teamRepository.GetTeamByName(lbl_firstSemifinalSecondTeam.Text).MatchesPlayed.Add(match1);
