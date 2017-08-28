@@ -48,5 +48,45 @@ namespace Tournaments.Domain.Repositories
                 context.SaveChanges();
             }
         }
+
+        public void AddPlayerToTeam(string teamName, string personName)
+        {
+            string[] array = personName.Split(' ');
+            string firstName = array[0];
+            string lastName = array[1];
+            using (var context = new TournamentsContext())
+            {
+                //var team = context.Teams.FirstOrDefault(x => x.Name == teamName);
+                var player = context.Players.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
+                context.Teams.FirstOrDefault(x => x.Name == teamName).Players.Add(player);
+                //context.Entry(team).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void RemovePlayerFromTeam(string teamName, string personName)
+        {
+            string[] array = personName.Split(' ');
+            string firstName = array[0];
+            string lastName = array[1];
+            using (var context = new TournamentsContext())
+            {
+                //var team = context.Teams.FirstOrDefault(x => x.Name == teamName);
+                var player = context.Players.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
+                context.Teams.FirstOrDefault(x => x.Name == teamName).Players.Remove(player);
+                //context.Entry(team).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoveAllPlayersFromTeam(string teamName)
+        {
+            using (var context = new TournamentsContext())
+            {
+                context.Teams.Include("Players").FirstOrDefault(x => x.Name == teamName).Players.ToList().ForEach(x => x.Team = null);
+                context.Teams.FirstOrDefault(x => x.Name == teamName).Players.Clear();
+                context.SaveChanges();
+            }
+        }
     }
 }

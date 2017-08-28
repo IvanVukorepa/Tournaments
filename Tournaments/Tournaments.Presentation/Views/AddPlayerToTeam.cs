@@ -39,8 +39,11 @@ namespace Tournaments.Presentation.Views
         {
             if (lbox_availablePlayers.SelectedItem != null)
             {
-                teamRepository.GetTeamByName(teamName).Players.Add(playerRepository.GetPlayerByName(lbox_availablePlayers.SelectedItem.ToString()));
-                playerRepository.GetPlayerByName(lbox_availablePlayers.SelectedItem.ToString()).Team=teamRepository.GetTeamByName(teamName);
+                //teamRepository.GetTeamByName(teamName).Players.Add(playerRepository.GetPlayerByName(lbox_availablePlayers.SelectedItem.ToString()));
+                //playerRepository.GetPlayerByName(lbox_availablePlayers.SelectedItem.ToString()).Team=teamRepository.GetTeamByName(teamName);
+
+                teamRepository.AddPlayerToTeam(teamName, lbox_availablePlayers.SelectedItem.ToString());
+                playerRepository.AddPlayerToTeam(teamName, lbox_availablePlayers.SelectedItem.ToString());
 
                 this.Close();
             }

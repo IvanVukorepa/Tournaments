@@ -58,15 +58,18 @@ namespace Tournaments.Presentation
         private void UpdatePlayersListBox()
         {
             lbox_players.Items.Clear();
-            lbox_players.Items.AddRange(teamRepository.GetTeamByName(lbox_teams.SelectedItem.ToString()).Players.Select(x => x.FirstName + " " + x.LastName).ToArray());
+            if(lbox_teams.SelectedItem != null)
+                lbox_players.Items.AddRange(teamRepository.GetTeamByName(lbox_teams.SelectedItem.ToString()).Players.Select(x => x.FirstName + " " + x.LastName).ToArray());
         }
 
         private void btn_DeleteTeam_Click(object sender, EventArgs e)
         {
             if (lbox_teams.SelectedItem != null)
             {
+                teamRepository.RemoveAllPlayersFromTeam(lbox_teams.SelectedItem.ToString());
                 teamRepository.DeleteTeam(lbox_teams.SelectedItem.ToString());
                 UpdateTeamsListBox();
+                UpdatePlayersListBox();
             }
         }
 
@@ -77,20 +80,34 @@ namespace Tournaments.Presentation
             teamRepository.DeleteTeam(teamName);
             addNewTeamForm.ShowDialog();
 
-            UpdateTeamsListBox();
+            //UpdateTeamsListBox();
         }
 
         private void btn_AddNewPlayer_Click(object sender, EventArgs e)
         {
             string teamName = lbox_teams.SelectedItem.ToString();
-            if (teamRepository.GetTeamByName(teamName).Players.Count == 5)
+            if (teamName != null)
             {
-                MessageBox.Show("That team already has 5 players!");
+                if (teamRepository.GetTeamByName(teamName).Players.Count == 5)
+                {
+                    MessageBox.Show("That team already has 5 players!");
+                }
+                else
+                {
+                    AddPlayerToTeam addPlayerForm = new AddPlayerToTeam(teamName);
+                    addPlayerForm.ShowDialog();
+                    UpdatePlayersListBox();
+                }
             }
-            else
+        }
+
+        private void btn_RemovePlayerFromTeam_Click(object sender, EventArgs e)
+        {
+            if (lbox_players.SelectedItem != null && lbox_teams.SelectedItem != null)
             {
-                AddPlayerToTeam addPlayerForm = new AddPlayerToTeam(teamName);
-                addPlayerForm.ShowDialog();
+                teamRepository.RemovePlayerFromTeam(lbox_teams.SelectedItem.ToString(), lbox_players.SelectedItem.ToString());
+                playerRepository.RemovePlayerFromTeam(lbox_teams.SelectedItem.ToString(), lbox_players.SelectedItem.ToString());
+
                 UpdatePlayersListBox();
             }
         }

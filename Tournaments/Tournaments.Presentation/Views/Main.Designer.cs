@@ -124,6 +124,7 @@
             this.btn_RemovePlayerFromTeam.TabIndex = 8;
             this.btn_RemovePlayerFromTeam.Text = "Remove";
             this.btn_RemovePlayerFromTeam.UseVisualStyleBackColor = true;
+            this.btn_RemovePlayerFromTeam.Click += new System.EventHandler(this.btn_RemovePlayerFromTeam_Click);
             // 
             // Form1
             // 

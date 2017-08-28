@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tournaments.Data;
 using Tournaments.Data.Models;
+using System.Data.Entity;
 
 namespace Tournaments.Domain.Repositories
 {
@@ -48,6 +49,34 @@ namespace Tournaments.Domain.Repositories
                 }              
             }
             return returnValue;
-        } 
+        }
+
+        public void AddPlayerToTeam(string teamName, string personName)
+        {
+            string[] array = personName.Split(' ');
+            string firstName = array[0];
+            string lastName = array[1];
+            using (var context = new TournamentsContext())
+            {
+                //var player = context.Players.FirstOrDefault(x => x.FirstName == array[0] && x.LastName == array[1]);
+                context.Players.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName).Team = context.Teams.FirstOrDefault(x => x.Name == teamName);
+                //context.Entry(player).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void RemovePlayerFromTeam(string teamName, string personName)
+        {
+            string[] array = personName.Split(' ');
+            string firstName = array[0];
+            string lastName = array[1];
+            using (var context = new TournamentsContext())
+            {
+                //var player = context.Players.FirstOrDefault(x => x.FirstName == array[0] && x.LastName == array[1]);
+                context.Players.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName).Team = null;
+                //context.Entry(player).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }
