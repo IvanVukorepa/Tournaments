@@ -77,10 +77,9 @@ namespace Tournaments.Presentation
         {
             string teamName = lbox_teams.SelectedItem.ToString();
             AddNewTeamForm addNewTeamForm = new AddNewTeamForm(teamRepository.GetTeamByName(teamName).Name, teamRepository.GetTeamByName(teamName).LogoAnimalName);
-            teamRepository.DeleteTeam(teamName);
             addNewTeamForm.ShowDialog();
 
-            //UpdateTeamsListBox();
+            UpdateTeamsListBox();
         }
 
         private void btn_AddNewPlayer_Click(object sender, EventArgs e)
@@ -110,6 +109,12 @@ namespace Tournaments.Presentation
 
                 UpdatePlayersListBox();
             }
+        }
+
+        private void btn_createMatch_Click(object sender, EventArgs e)
+        {
+            MatchForm matchForm = new MatchForm();
+            matchForm.ShowDialog();
         }
     }
 }

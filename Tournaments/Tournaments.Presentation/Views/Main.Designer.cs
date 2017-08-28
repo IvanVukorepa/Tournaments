@@ -37,6 +37,8 @@
             this.btn_DeleteTeam = new System.Windows.Forms.Button();
             this.btn_AddNewPlayer = new System.Windows.Forms.Button();
             this.btn_RemovePlayerFromTeam = new System.Windows.Forms.Button();
+            this.btn_createMatch = new System.Windows.Forms.Button();
+            this.btn_createTournament = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbox_teams
@@ -126,11 +128,32 @@
             this.btn_RemovePlayerFromTeam.UseVisualStyleBackColor = true;
             this.btn_RemovePlayerFromTeam.Click += new System.EventHandler(this.btn_RemovePlayerFromTeam_Click);
             // 
+            // btn_createMatch
+            // 
+            this.btn_createMatch.Location = new System.Drawing.Point(339, 280);
+            this.btn_createMatch.Name = "btn_createMatch";
+            this.btn_createMatch.Size = new System.Drawing.Size(108, 89);
+            this.btn_createMatch.TabIndex = 9;
+            this.btn_createMatch.Text = "Create match";
+            this.btn_createMatch.UseVisualStyleBackColor = true;
+            this.btn_createMatch.Click += new System.EventHandler(this.btn_createMatch_Click);
+            // 
+            // btn_createTournament
+            // 
+            this.btn_createTournament.Location = new System.Drawing.Point(492, 280);
+            this.btn_createTournament.Name = "btn_createTournament";
+            this.btn_createTournament.Size = new System.Drawing.Size(101, 89);
+            this.btn_createTournament.TabIndex = 10;
+            this.btn_createTournament.Text = "Create tournament";
+            this.btn_createTournament.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 465);
+            this.ClientSize = new System.Drawing.Size(674, 465);
+            this.Controls.Add(this.btn_createTournament);
+            this.Controls.Add(this.btn_createMatch);
             this.Controls.Add(this.btn_RemovePlayerFromTeam);
             this.Controls.Add(this.btn_AddNewPlayer);
             this.Controls.Add(this.btn_DeleteTeam);
@@ -159,6 +182,8 @@
         private System.Windows.Forms.Button btn_DeleteTeam;
         private System.Windows.Forms.Button btn_AddNewPlayer;
         private System.Windows.Forms.Button btn_RemovePlayerFromTeam;
+        private System.Windows.Forms.Button btn_createMatch;
+        private System.Windows.Forms.Button btn_createTournament;
     }
 }
 

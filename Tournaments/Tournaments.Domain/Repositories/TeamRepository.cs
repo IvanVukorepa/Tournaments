@@ -15,7 +15,7 @@ namespace Tournaments.Domain.Repositories
         {
             using (var context = new TournamentsContext())
             {
-                return context.Teams.ToList();
+                return context.Teams.Include("Players").ToList();
             }
         }
 
@@ -43,8 +43,20 @@ namespace Tournaments.Domain.Repositories
         {
             using (var context = new TournamentsContext())
             {
-                var team = context.Teams.FirstOrDefault(x => x.Name == name);
+                var team = GetTeamByName(name);
                 context.Entry(team).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
+
+        public void EditTeam(string oldName, string newName, string logoAnimalName)
+        {
+            using (var context = new TournamentsContext())
+            {
+                var team = GetTeamByName(oldName);
+                team.Name = newName;
+                team.LogoAnimalName = logoAnimalName;
+                context.Entry(team).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
