@@ -68,7 +68,7 @@ namespace Tournaments.Presentation.Views
             }
             else
             {
-                Match match = matchRepository.CreateMatch(lbl_firstFinalsTeam.Text + "-" + lbl_secondFinalsTeam.Text, Round.semiFinals, true);
+                Match match = matchRepository.CreateMatch(lbl_firstFinalsTeam.Text + "-" + lbl_secondFinalsTeam.Text, Round.finals, true);
                 match.Tournament = Tournament;
                 Tournament.Matches.Add(match);
 
@@ -82,13 +82,16 @@ namespace Tournaments.Presentation.Views
                 if (rnd.Next(0, 1) < 0.5)
                 {
                     MessageBox.Show(lbl_firstFinalsTeam.Text + " won the tournament");
-
+                    teamRepository.GetTeamByName(lbl_firstFinalsTeam.Text).TournamentsWon.Add(Tournament);
+                    teamRepository.GetTeamByName(lbl_firstFinalsTeam.Text).LastTournamentWonDate = DateTime.Now;
                 }
                 else
                 {
                     MessageBox.Show(lbl_secondFinalsTeam.Text + " won the tournament");
-
+                    teamRepository.GetTeamByName(lbl_secondFinalsTeam.Text).TournamentsWon.Add(Tournament);
+                    teamRepository.GetTeamByName(lbl_secondFinalsTeam.Text).LastTournamentWonDate = DateTime.Now;
                 }
+                this.Close();
             }
         }
 
