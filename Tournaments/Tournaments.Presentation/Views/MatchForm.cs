@@ -52,6 +52,8 @@ namespace Tournaments.Presentation.Views
                     MessageBox.Show(lbox_homeTeamSelection.SelectedItem.ToString() + " won");
                 else
                     MessageBox.Show(lbox_awayTeamSelection.SelectedItem.ToString() + " won");
+
+                this.Close();
             }
             else if (lbox_awayTeamSelection.SelectedItem.ToString() == lbox_homeTeamSelection.SelectedItem.ToString())
                 MessageBox.Show("You have to choose two different teams");

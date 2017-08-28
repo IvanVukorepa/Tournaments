@@ -87,6 +87,18 @@
     <Compile Include="Views\MatchForm.Designer.cs">
       <DependentUpon>MatchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\TournamentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TournamentForm.Designer.cs">
+      <DependentUpon>TournamentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TournamentMatches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TournamentMatches.Designer.cs">
+      <DependentUpon>TournamentMatches.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AddNewTeamForm.resx">
       <DependentUpon>AddNewTeamForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +122,12 @@
     </Compile>
     <EmbeddedResource Include="Views\MatchForm.resx">
       <DependentUpon>MatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TournamentForm.resx">
+      <DependentUpon>TournamentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TournamentMatches.resx">
+      <DependentUpon>TournamentMatches.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

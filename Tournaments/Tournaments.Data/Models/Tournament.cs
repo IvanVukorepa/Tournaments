@@ -16,11 +16,14 @@ namespace Tournaments.Data.Models
 
         public ICollection<Match> Matches { get; set; }
 
-        public Tournament(DateTime startDate, DateTime endDate)
+        public Tournament() { }
+
+        public Tournament(DateTime startDate, DateTime endDate, string name)
         {
             Matches = new List<Match>();
             StartDate = startDate;
             EndDate = endDate;
+            Name = name;
         }
     }
 }

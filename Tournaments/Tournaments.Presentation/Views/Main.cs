@@ -116,5 +116,16 @@ namespace Tournaments.Presentation
             MatchForm matchForm = new MatchForm();
             matchForm.ShowDialog();
         }
+
+        private void btn_createTournament_Click(object sender, EventArgs e)
+        {
+            if (teamRepository.GetAllTeams().Select(x => x.Players.Count() == 5).Count() >= 4)
+            {
+                TournamentForm tournamentForm = new TournamentForm();
+                tournamentForm.ShowDialog();
+            }
+            else
+                MessageBox.Show("You need 4 or more teams with 5 players to create a tournament!");
+        }
     }
 }

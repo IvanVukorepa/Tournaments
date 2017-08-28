@@ -12,7 +12,7 @@ namespace Tournaments.Domain.Repositories
     {
         public Match CreateMatch(string name, Round round, bool isTournamentMatch/*, Team team1, Team team2*/)
         {
-            Match match = new Match() { Name = name, Round = round, IsTournamentMatch = isTournamentMatch };
+            Match match = new Match() { Name = name, Round = round, IsTournamentMatch = isTournamentMatch, Tournament=null };
             //match.Teams.Add(team1);
             //match.Teams.Add(team2);
             using (var context = new TournamentsContext())
